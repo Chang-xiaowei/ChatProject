@@ -35,9 +35,17 @@ namespace ServiceProxy.Core
         {
             return mInstance;
         }
+        public void Join(ClientData client)
+        {
+            mServerServiceProxy.Join(client);
+        }
         public void Send(string msg)
         {
             mServerServiceProxy.Send(msg);
+        }
+        public void Exit()
+        {
+            mServerServiceProxy.Exit();
         }
         #endregion
 

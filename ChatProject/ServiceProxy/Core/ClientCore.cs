@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WCF.Datas.Structs;
 
 namespace ServiceProxy.Core
 {
@@ -23,6 +24,11 @@ namespace ServiceProxy.Core
         #endregion
 
         #region - public Functions -
+        public ClientCore()
+        {
+            ClientData clientData = new ClientData();
+            mServerProxyCore.Join(clientData);
+        }
         public static ClientCore GetInstance()
         {
             return mInstance;

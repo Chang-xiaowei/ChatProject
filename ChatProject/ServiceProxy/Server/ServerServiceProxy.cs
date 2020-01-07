@@ -5,6 +5,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using WCF.Datas.Structs;
 using WCF.Interfaces;
 
 namespace ServiceProxy
@@ -32,10 +33,19 @@ namespace ServiceProxy
         #endregion
 
         #region - public Functions -
+        public void Join(ClientData clientData)
+        {
+            mServerClient.Join(clientData);
+        }
         public void Send(string msg)
         {
             mServerClient.Send(msg);
         }
+        public void Exit()
+        {
+            mServerClient.Exit();
+        }
+
         #endregion
 
         #region - Private Functions -

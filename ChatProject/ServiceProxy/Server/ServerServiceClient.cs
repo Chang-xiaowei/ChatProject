@@ -5,6 +5,7 @@ using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Text;
 using System.Threading.Tasks;
+using WCF.Datas.Structs;
 using WCF.Interfaces;
 
 namespace ServiceProxy.Server
@@ -22,10 +23,25 @@ namespace ServiceProxy.Server
         #region - Constructors -
         public ServerServiceClient(InstanceContext callBackInstance, ServiceEndpoint endpoint) : base(callBackInstance, endpoint) { }
         public ServerServiceClient(InstanceContext callBackInstance, string endpointConfiguratonName) : base(callBackInstance, endpointConfiguratonName) { }
+
+
         #endregion
 
         #region - public Functions -
 
+
+        public void Join(ClientData clientData)
+        {
+            try
+            {
+                base.CreateChannel().Join(clientData);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.ToString());
+            }
+        }
         public void Send(string msg)
         {
             try
@@ -38,6 +54,18 @@ namespace ServiceProxy.Server
                 Console.WriteLine(ex.ToString());
             }
 
+        }
+        public void Exit()
+        {
+            try
+            {
+                base.CreateChannel().Exit();
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.ToString());
+            }
         }
         #endregion
 
