@@ -1,4 +1,4 @@
-﻿using ChatService.Core;
+﻿using ChatService;
 using System;
 using System.Collections.Generic;
 using System.Linq;

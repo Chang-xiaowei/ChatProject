@@ -5,7 +5,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using WCF.Datas.Structs;
+using WCF.Datas;
 using WCF.Interfaces;
 
 namespace ServiceProxy
@@ -14,7 +14,7 @@ namespace ServiceProxy
     {
         #region - Variables 
         private static ServerServiceProxy mInstance = new ServerServiceProxy();
-        private ServerServiceClient mServerClient = new ServerServiceClient(new InstanceContext(new ServerCallback()), "defalultOperationClient");
+        private ServerServiceClient mServerClient = null;
         #endregion
 
         #region - Properties -
@@ -33,9 +33,23 @@ namespace ServiceProxy
         #endregion
 
         #region - public Functions -
-        public void Join(ClientData clientData)
+        public void Join(ClientData client)
         {
-            mServerClient.Join(clientData);
+            if (null == client || mServerClient != null)
+            {
+                return;
+            }
+            mServerClient = new ServerServiceClient(new InstanceContext(new ServerCallback()), "defalultOperationClient");
+            client.Port = mServerClient.Endpoint.Address.Uri.Port.ToString();
+            try
+            {
+                mServerClient.Join(client);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
         }
         public void Send(string msg)
         {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Module.ManagerCenter.Core
+namespace Module.ManagerCenter
 {
-  public class ServerManagerCenter
+    public class ServerManagerCenter
     {
     }
 }

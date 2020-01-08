@@ -5,7 +5,7 @@ namespace ChatClient
 {
     class Program
     {
-        private static ClientCore mClientCore = new ClientCore();
+        private static ClientCore mClientCore = ClientCore.GetInstance();
         static void Main(string[] args)
         {
             mClientCore.Send("7897");

@@ -51,6 +51,10 @@
     <Compile Include="Server\ServerServiceClient.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Utility.Tools\Utility.Tools.csproj">
+      <Project>{9396C507-130D-49A8-A056-98B13B341293}</Project>
+      <Name>Utility.Tools</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WCF.Datas\WCF.Datas.csproj">
       <Project>{D430930C-37B7-432A-9996-4768D9BEB0BD}</Project>
       <Name>WCF.Datas</Name>

@@ -5,7 +5,7 @@ using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Text;
 using System.Threading.Tasks;
-using WCF.Datas.Structs;
+using WCF.Datas;
 using WCF.Interfaces;
 
 namespace ServiceProxy.Server

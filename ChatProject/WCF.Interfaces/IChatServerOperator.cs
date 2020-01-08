@@ -4,7 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using WCF.Datas.Structs;
+using WCF.Datas;
 
 namespace WCF.Interfaces
 {
@@ -14,7 +14,8 @@ namespace WCF.Interfaces
     {
         [OperationContract(IsOneWay = true, IsInitiating = true, IsTerminating = false)]
         void Join(ClientData clientData);
-        [OperationContract(IsOneWay =true,IsInitiating =true,IsTerminating =false)]
+
+        [OperationContract(IsOneWay = true, IsInitiating = true, IsTerminating = false)]
         void Send(string msg);
 
         [OperationContract(IsOneWay = true, IsInitiating = true, IsTerminating = true)]

@@ -11,6 +11,5 @@ namespace WCF.Interfaces
     {
         [OperationContract(IsOneWay =true)]
         void SendData(string msg);
-
     }
 }

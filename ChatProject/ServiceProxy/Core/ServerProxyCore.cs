@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WCF.Datas.Structs;
+using WCF.Datas;
 
 namespace ServiceProxy.Core
 {
@@ -24,7 +24,7 @@ namespace ServiceProxy.Core
         #endregion
 
         #region - Constructors -
-        public ServerProxyCore()
+        private ServerProxyCore()
         {
            
         }

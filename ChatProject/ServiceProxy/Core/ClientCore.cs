@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using WCF.Datas.Structs;
+using Utility.Tools;
+using WCF.Datas;
 
 namespace ServiceProxy.Core
 {
@@ -11,8 +13,9 @@ namespace ServiceProxy.Core
     {
         //todo 从客户端拿到数据发送到服务器端
         #region - Variables 
+        private ClientData mCurrentClientData = null;
         private static ClientCore mInstance = new ClientCore();
-        private static ServerProxyCore mServerProxyCore = ServerProxyCore.GetInStance();
+        private  ServerProxyCore mServerProxyCore = ServerProxyCore.GetInStance();
         #endregion
 
         #region - Properties -
@@ -24,10 +27,12 @@ namespace ServiceProxy.Core
         #endregion
 
         #region - public Functions -
-        public ClientCore()
+        private ClientCore()
         {
-            ClientData clientData = new ClientData();
-            mServerProxyCore.Join(clientData);
+            mCurrentClientData = new ClientData();
+            mCurrentClientData.IP = PubFunHelper.GetLocalIP();
+            mCurrentClientData.Name = Dns.GetHostName();
+            Join();
         }
         public static ClientCore GetInstance()
         {
@@ -38,13 +43,16 @@ namespace ServiceProxy.Core
         {
             mServerProxyCore.Send(msg);
         }
+        public void Join()
+        {
+            mServerProxyCore.Join(mCurrentClientData);
+        }
         #endregion
 
         #region - Private Functions -
 
         #endregion
-
-       
+        
 
         #region - Events Functions -
 

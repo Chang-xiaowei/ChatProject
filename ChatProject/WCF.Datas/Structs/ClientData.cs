@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WCF.Datas.Structs
+namespace WCF.Datas
 {
     [DataContract]
     public class ClientData
