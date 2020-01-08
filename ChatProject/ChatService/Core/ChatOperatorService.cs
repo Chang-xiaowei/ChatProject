@@ -26,14 +26,22 @@ namespace ChatService
         #region - public Functions -
         public void Exit()
         {
-            throw new NotImplementedException();
+            string sessionId = OperationContext.Current.SessionId;
+            mClientDatadics.TryRemove(sessionId, out ClientData clientData);
+            Console.WriteLine($"Exit Connction {DateTime.Now.ToString()}: Name :{clientData.Name }: IP: {clientData.IP}");
         }
-        public void Join(ClientData clientData)
+        public void Join(ClientData client)
         {
-            if (clientData == null)
+            string sessionID = OperationContext.Current.SessionId;
+            if (mClientDatadics.ContainsKey(sessionID))
             {
-
+                Console.WriteLine($"Existed Client  Name :[{client.Name}] IP:[{client.IP}]");
+                return;
             }
+            mClientDatadics.TryAdd(sessionID, client);
+            Console.WriteLine("*********************======连接服务的个数****************");
+            Console.WriteLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}] Join  Name [{client.Name}] IP [{client.IP}]");
+            Console.WriteLine("Listener count:" + mClientDatadics.Count);           
         }
         public void Send(string msg)
         {
